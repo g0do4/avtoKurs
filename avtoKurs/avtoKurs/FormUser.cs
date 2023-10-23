@@ -57,8 +57,15 @@ namespace avtoKurs
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
-			isSave = false;
+			try
+			{
+				dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+				isSave = false;
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Необходимо выбрать строку полностью");
+			}
 
 		}
 

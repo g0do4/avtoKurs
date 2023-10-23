@@ -56,10 +56,18 @@ namespace avtoKurs
 			{
 				return;
 			}
-			dataGridView2.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
-			dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
-			isSave = false;
-			isDel = true;
+			try
+			{
+
+				dataGridView2.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+				dataGridView1.Rows.RemoveAt(this.dataGridView1.SelectedRows[0].Index);
+				isSave = false;
+				isDel = true;
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Необходимо выбрать строку полностью");
+			}
 		}
 
 		private void buttonSave_Click(object sender, EventArgs e)
