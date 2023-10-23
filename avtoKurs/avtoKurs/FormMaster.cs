@@ -86,7 +86,7 @@ namespace avtoKurs
 		private void buttonAgeUpdate_Click(object sender, EventArgs e)
 		{
 			dataGridView1.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxAge.Text;
-			dataGridView2.Rows[this.dataGridView2.SelectedRows[0].Index].Cells[2].Value = textBoxAge.Text;
+			dataGridView2.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxAge.Text;
 			isSave = false;
 		}
 
