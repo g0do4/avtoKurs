@@ -41,7 +41,7 @@ namespace avtoKurs
 		bool isDel = false;
 		private void buttonDel_Click(object sender, EventArgs e)
 		{
-			DialogResult dialogResult = MessageBox.Show("При удалении данной записи удалятся соответствующие записи из таблиц 'Мастера', 'Позиции' и 'Услуги'. Продилжить?","Удаление" , MessageBoxButtons.YesNo);
+			DialogResult dialogResult = MessageBox.Show("При удалении данной записи удалятся соответствующие записи из таблиц 'Мастера', 'Позиции' и 'Услуги'. Продилжить?", "Удаление", MessageBoxButtons.YesNo);
 			if (dialogResult == DialogResult.No)
 			{
 				return;
@@ -71,8 +71,15 @@ namespace avtoKurs
 
 		private void buttonPriceUpdate_Click(object sender, EventArgs e)
 		{
-			dataGridView1.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxPrice.Text;
-			isSave = false;
+			try
+			{
+				dataGridView1.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxPrice.Text;
+				isSave = false;
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Необходимо выбрать строку полностью");
+			}
 		}
 
 		private void FormWork_FormClosing(object sender, FormClosingEventArgs e)

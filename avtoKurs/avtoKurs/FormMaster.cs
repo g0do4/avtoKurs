@@ -26,7 +26,7 @@ namespace avtoKurs
 			// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetAvtoKurs.FullMaster". При необходимости она может быть перемещена или удалена.
 			this.fullMasterTableAdapter.Fill(this.dataSetAvtoKurs.FullMaster);
 			// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetAvtoKurs.master". При необходимости она может быть перемещена или удалена.
-			
+
 		}
 
 		bool isSave = true;
@@ -43,7 +43,7 @@ namespace avtoKurs
 
 			dataSetAvtoKurs.master.AddmasterRow(work, textBoxName.Text, Convert.ToInt32(textBoxAge.Text));
 			dataSetAvtoKurs.FullMaster.AddFullMasterRow(textBoxName.Text, Convert.ToInt32(textBoxAge.Text), comboBox1.SelectedItem.ToString());
-			
+
 			isSave = false;
 		}
 
@@ -85,14 +85,22 @@ namespace avtoKurs
 
 		private void buttonAgeUpdate_Click(object sender, EventArgs e)
 		{
-			dataGridView1.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxAge.Text;
-			dataGridView2.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxAge.Text;
-			isSave = false;
+			try
+			{
+				dataGridView1.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxAge.Text;
+				dataGridView2.Rows[this.dataGridView1.SelectedRows[0].Index].Cells[2].Value = textBoxAge.Text;
+				isSave = false;
+			}
+			catch (Exception)
+			{
+
+				MessageBox.Show("Необходимо выбрать строку полностью");
+			}
 		}
 
 		private void buttonFind_Click(object sender, EventArgs e)
 		{
-			int foundIndex =fullMasterBindingSource.Find("nameMaster", textBoxName.Text);
+			int foundIndex = fullMasterBindingSource.Find("nameMaster", textBoxName.Text);
 			fullMasterBindingSource.Position = foundIndex;
 		}
 
