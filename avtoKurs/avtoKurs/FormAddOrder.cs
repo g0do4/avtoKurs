@@ -155,6 +155,8 @@ namespace avtoKurs
 			{
 				try
 				{
+					this.carTableAdapter.Fill(this.dataSetAvtoKurs.car);
+					carBindingSource.Filter = "";
 					cmdStr = "INSERT INTO car VALUES (@idClient,@mark,@number,@photo)";
 					cmd = new SqlCommand(cmdStr, con);
 					cmd.Parameters.AddWithValue("@idClient", idClient);
